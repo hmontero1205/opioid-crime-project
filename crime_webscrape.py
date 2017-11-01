@@ -34,4 +34,4 @@ def extract_data(search_city, search_state):
     return crimes_committed
 
 #Test Code
-print(extract_data("New-York", "New-York"))
+print(extract_data("New", "Florida"))
