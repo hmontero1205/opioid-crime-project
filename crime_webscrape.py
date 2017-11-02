@@ -74,7 +74,7 @@ def zip_to_cities(zip_code):
     
     
 def read_county_to_zip():
-    fips_to_zips = open("county_to_zip.csv","r", encoding = 'utf-8')
+    fips_to_zips = open("assets/county_to_zip.csv","r", encoding = 'utf-8')
     fz_dict = dict()
     for line in fips_to_zips:
         line_info = line.strip().split("\t")
@@ -90,7 +90,7 @@ def read_county_to_zip():
     return(fz_dict)
 def read_state_abbv():
     abbvs_to_states = dict()
-    abbv_file = open("states.csv")
+    abbv_file = open("assets/states.csv")
     for line in abbv_file:
         info = line.strip().split(",")
         abbvs_to_states[info[0]] = info[1]
