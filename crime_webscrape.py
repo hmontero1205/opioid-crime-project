@@ -108,7 +108,5 @@ def counties_to_crimes(cc):
 """
 Reading in CSV files for webscraping
 """
-
 fz_dict = read_county_to_zip()
 sa_dict = read_state_abbv()
-
