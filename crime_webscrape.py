@@ -54,19 +54,23 @@ def county_code_to_cities(cc):
     global fz_dict
     cities_found = set()
     for zip_code in fz_dict[cc]:
-        url = ("https://www.searchbug.com/tools/zip-code-lookup.aspx?TYPE=zip2city&ZIP=" + zip_code)
+        url = ("http://www.addresses.com/zip-code-lookup/" + zip_code)
         page = urllib.request.urlopen(url)
         soup = BeautifulSoup(page, "html.parser")
-        cities_found.add(tuple(str(soup.findAll("font")[2].contents[0]).strip().split(", ")))
+        city_str = soup.find(id = "ZIP_qloc").attrs['value']
+        city_state = city_str[:len(city_str) - 6].split(", ")
+        cities_found.add((city_state[0], sa_dict[city_state[1]]))
     return(cities_found)
 
 def zip_to_cities(zip_code):
+    global sa_dict
     cities_found = set()
-    url = ("https://www.searchbug.com/tools/zip-code-lookup.aspx?TYPE=zip2city&ZIP=" + zip_code)
+    url = ("http://www.addresses.com/zip-code-lookup/" + zip_code)
     page = urllib.request.urlopen(url)
     soup = BeautifulSoup(page, "html.parser")
-    cities_found.add(tuple(str(soup.findAll("font")[2].contents[0]).strip().split(", ")))
-    return(cities_found)
+    city_str = soup.find(id = "ZIP_qloc").attrs['value']
+    city_state = city_str[:len(city_str) - 6].split(", ")
+    cities_found.add((city_state[0], sa_dict[city_state[1]]))
     
     
 def read_county_to_zip():
@@ -84,7 +88,14 @@ def read_county_to_zip():
         fz_dict[c_fips].add(c_zip)
         
     return(fz_dict)
-    
+def read_state_abbv():
+    abbvs_to_states = dict()
+    abbv_file = open("states.csv")
+    for line in abbv_file:
+        info = line.strip().split(",")
+        abbvs_to_states[info[0]] = info[1]
+    return abbvs_to_states
+
 def counties_to_crimes(cc):
     crime_dict = dict()
     for city in county_code_to_cities(cc):
@@ -92,41 +103,12 @@ def counties_to_crimes(cc):
         state_name = city[1].replace(" ", "-").title()
         crime_dict[city] = extract_crime_data(city_name, state_name)
     
-    print(crime_dict)
-fz_dict = read_county_to_zip()
-#zip_to_cities("11385")
+    return crime_dict
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-#Test Code
-#crime_hash = extract_crime_data("New-York", "New-York")
-#print(crime_hash)
-
-counties_to_crimes("53077")
-
-"""objects = tuple(crime_hash.keys())
-y_pos = np.arange(len(objects))
-performance = crime_hash.values()
- 
-plt.bar(y_pos, performance, align='center', alpha=0.5)
-plt.xticks(y_pos, objects)
-plt.ylabel('Number committed since 2002')
-plt.title('Crime')
- 
-#plt.show()
+"""
+Reading in CSV files for webscraping
 """
 
-#Returns {'Murders': 7204, 'Rapes': 21014,'Robberies': 316217, 'Assaults': 441340,
-#'Burglaries': 302784, 'Thefts': 1745775, 'Auto thefts': 199297}
+fz_dict = read_county_to_zip()
+sa_dict = read_state_abbv()
 
