@@ -1,5 +1,6 @@
 #Hans Montero & Rhys Murray
 
+
 import urllib
 from bs4 import BeautifulSoup
 
@@ -71,8 +72,7 @@ def zip_to_cities(zip_code):
     city_str = soup.find(id = "ZIP_qloc").attrs['value']
     city_state = city_str[:len(city_str) - 6].split(", ")
     cities_found.add((city_state[0], sa_dict[city_state[1]]))
-    
-    
+    return(cities_found)
 def read_county_to_zip():
     fips_to_zips = open("assets/county_to_zip.csv","r", encoding = 'utf-8')
     fz_dict = dict()
