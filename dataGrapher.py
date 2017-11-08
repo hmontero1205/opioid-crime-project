@@ -44,7 +44,7 @@ def plotOpioidData(zc):
     if len(cityList) == 1:
         cityName = cityList[0][0]
     else:
-        raise Exception("Need to fix this shit")
+        raise Exception("More than one city found!")
     cc = int(cc)
     selectedDeaths = o.deathsDict[cc]
     pylab.title("Deaths due to Opioids in " + str(cityName))
@@ -52,7 +52,3 @@ def plotOpioidData(zc):
     pylab.ylabel("Crude Death rate per 100,000 residents")
     pylab.xlabel("Year")
     pylab.savefig('deaths.png')
-
-
-plotCrimeData('79734')
-plotOpioidData('70767')

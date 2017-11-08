@@ -1,6 +1,4 @@
 #Hans Montero & Rhys Murray
-
-
 import urllib
 from bs4 import BeautifulSoup
 
@@ -110,4 +108,3 @@ Reading in CSV files for webscraping
 """
 fz_dict = read_county_to_zip()
 sa_dict = read_state_abbv()
-print(counties_to_crimes("35001"))

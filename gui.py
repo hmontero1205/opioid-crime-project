@@ -1,5 +1,8 @@
 from appJar import gui
+import pip as p
 import dataGrapher as d
+
+p.main(['install', 'appJar'])
 
 def press(button):
     if button == "Close":
