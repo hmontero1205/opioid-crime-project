@@ -24,7 +24,7 @@ def plotCrimeData(zc):
     pylab.ylabel("Rate per 100,000 residents")
     pylab.xlabel("Year")
     pylab.legend(loc='upper left')
-    pylab.savefig('crimes.png')
+    pylab.savefig('images/crimes.png')
 def zip_to_county(zc):
     #returns county code for a given zipcode
     countyCode = 0
@@ -51,4 +51,4 @@ def plotOpioidData(zc):
     pylab.plot(list(selectedDeaths.keys()), list(selectedDeaths.values()))
     pylab.ylabel("Crude Death rate per 100,000 residents")
     pylab.xlabel("Year")
-    pylab.savefig('deaths.png')
+    pylab.savefig('images/deaths.png')
