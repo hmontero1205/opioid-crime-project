@@ -1,3 +1,4 @@
+#Hans Montero & Rhys Murray
 import pandas as pd
 import collections
 def readTable():

@@ -1,3 +1,4 @@
+#Hans Montero & Rhys Murray
 import crime_webscrape as c
 import FileReader as o
 import pylab 
@@ -5,7 +6,6 @@ def findCrime(zc):
     #returns a dictionary of crimes for a given zipcode
     cities = c.zip_to_cities(zc)
     if cities is None:
-        print("hey1")
         return list()
     
     crime_dict = dict()

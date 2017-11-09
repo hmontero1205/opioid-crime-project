@@ -1,7 +1,7 @@
+#Hans Montero & Rhys Murray
 from appJar import gui
 import pip as p
 import dataGrapher as d
-import random
 
 p.main(['install', 'appJar'])
 popUpNames = dict()
@@ -11,7 +11,6 @@ def press(button):
         window.stop()
     if button == "Search":
         d.pylab.clf()
-        windowId = random.randrange(1,100000)
         zipCode = window.getEntry("ZipCode")
         if not(str(zipCode).isdigit()):
             print("Invalid entry!")
@@ -50,7 +49,6 @@ def press(button):
             extraText = "(" + str(popUpNames[zipCode]) + ")"
             popUpNames[zipCode] += 1
             
-        windowId = random.randrange(1,100000)
         window.startSubWindow(str(zipCode) + " Crimes " + extraText)
         d.plotCrimeData(zipCode)
         window.addImage(str(zipCode) + "c" + extraText, 'images/crimes.png')
@@ -69,7 +67,6 @@ def press(button):
         else:
             extraText = "(" + str(popUpNames[zipCode]) + ")"
             popUpNames[zipCode] += 1
-        windowId = random.randrange(1,100000)
         window.startSubWindow(str(zipCode) + " Crimes " + extraText)
         d.plotCrimeData(zipCode)
         window.addImage(str(zipCode) + "c"+ extraText, 'images/crimes.png')
