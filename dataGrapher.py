@@ -52,7 +52,3 @@ def plotOpioidData(zc):
     pylab.ylabel("Crude Death rate per 100,000 residents")
     pylab.xlabel("Year")
     pylab.savefig('deaths.png')
-
-
-plotCrimeData('79734')
-plotOpioidData('70767')

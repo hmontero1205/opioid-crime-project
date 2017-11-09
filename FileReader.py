@@ -6,17 +6,11 @@ def readTable():
     dataTable = dataTable[dataTable.notnull()]
     CrudeDeathRate_Years_CountyCode = dataTable[["County Code", "Year", "Crude Rate", "Population"]]
     DeathRateDict = collections.defaultdict(dict)
-    #for index, row in CrudeDeathRate_Years_CountyCode.iterrows():
-        #if row['Population'] == "Unreliable" or row['Population'] == 'Missing':
-            #row['Population'] =  0
-        #if float(row['Population']) < 100000:
-            #CrudeDeathRate_Years_CountyCode = CrudeDeathRate_Years_CountyCode.drop(index)
     for index, row in CrudeDeathRate_Years_CountyCode.iterrows():
         if row['Crude Rate'] == "Unreliable" or row['Crude Rate'] == 'Missing':
             row['Crude Rate'] = 0
         DeathRateDict[row['County Code']][row['Year']] = row['Crude Rate']
     return DeathRateDict
-
 def getHighestValue(n):
     highestValue = 0
     highestValueKey1 = ''
@@ -40,5 +34,4 @@ def getLowestValue(n):
                 lowestValueKey2 = key2
     return (lowestValueKey1, lowestValueKey2, lowestValue)
 deathsDict = readTable()
-#print(getHighestValue(deathsDict))
-#print(getLowestValue(deathsDict))
+
