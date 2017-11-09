@@ -69,6 +69,10 @@ def zip_to_cities(zip_code):
     soup = BeautifulSoup(page, "html.parser")
     city_str = soup.find(id = "ZIP_qloc").attrs['value']
     city_state = city_str[:len(city_str) - 6].split(", ")
+    if(len(city_state) <= 1):
+        print("Invalid zip!")
+        return
+    
     cities_found.add((city_state[0], sa_dict[city_state[1]]))
     return(cities_found)
 def read_county_to_zip():
