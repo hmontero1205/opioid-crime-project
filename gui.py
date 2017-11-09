@@ -1,6 +1,9 @@
 from appJar import gui
+import pip as p
 import dataGrapher as d
 import random
+
+p.main(['install', 'appJar'])
 
 def press(button):
     if button == "Close":
@@ -11,11 +14,11 @@ def press(button):
         zipCode = window.getEntry("ZipCode")
         window.startSubWindow(str(windowId) + " Crimes")
         d.plotCrimeData(zipCode)
-        window.addImage(str(windowId) + "c", 'crimes.png')
+        window.addImage(str(windowId) + "c", 'images/crimes.png')
         window.stopSubWindow()
         window.startSubWindow(str(windowId) + " Deaths")
         d.plotOpioidData(zipCode)
-        window.addImage(str(windowId) + "d", "deaths.png")
+        window.addImage(str(windowId) + "d", "images/deaths.png")
         window.showSubWindow(str(windowId) + " Crimes")
         window.showSubWindow(str(windowId) + " Deaths")
     if button == "Lowest":
@@ -24,11 +27,11 @@ def press(button):
         windowId = random.randrange(1,100000)
         window.startSubWindow(str(windowId) + " Crimes")
         d.plotCrimeData(zipCode)
-        window.addImage(str(windowId) + "c", 'crimes.png')
+        window.addImage(str(windowId) + "c", 'images/crimes.png')
         window.stopSubWindow()
         window.startSubWindow(str(windowId) + " Deaths")
         d.plotOpioidData(zipCode)
-        window.addImage(str(windowId) + "d", "deaths.png")
+        window.addImage(str(windowId) + "d", "images/deaths.png")
         window.showSubWindow(str(windowId) + " Crimes")
         window.showSubWindow(str(windowId) + " Deaths")
     if button == "Highest":
@@ -37,11 +40,11 @@ def press(button):
         windowId = random.randrange(1,100000)
         window.startSubWindow(str(windowId) + " Crimes")
         d.plotCrimeData(zipCode)
-        window.addImage(str(windowId) + "c", 'crimes.png')
+        window.addImage(str(windowId) + "c", 'images/crimes.png')
         window.stopSubWindow()
         window.startSubWindow(str(windowId) + " Deaths")
         d.plotOpioidData(zipCode)
-        window.addImage(str(windowId) + "d", "deaths.png")
+        window.addImage(str(windowId) + "d", "images/deaths.png")
         window.showSubWindow(str(windowId) + " Crimes")
         window.showSubWindow(str(windowId) + " Deaths")
 window = gui("Opioid Crisis Tool", "400x400")

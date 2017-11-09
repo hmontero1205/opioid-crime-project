@@ -24,7 +24,7 @@ def plotCrimeData(zc):
     pylab.ylabel("Rate per 100,000 residents")
     pylab.xlabel("Year")
     pylab.legend(loc='upper left')
-    pylab.savefig('crimes.png')
+    pylab.savefig('images/crimes.png')
 def zip_to_county(zc):
     #returns county code for a given zipcode
     countyCode = 0
@@ -44,11 +44,11 @@ def plotOpioidData(zc):
     if len(cityList) == 1:
         cityName = cityList[0][0]
     else:
-        raise Exception("Need to fix this shit")
+        raise Exception("More than one city found!")
     cc = int(cc)
     selectedDeaths = o.deathsDict[cc]
     pylab.title("Deaths due to Opioids in " + str(cityName))
     pylab.plot(list(selectedDeaths.keys()), list(selectedDeaths.values()))
     pylab.ylabel("Crude Death rate per 100,000 residents")
     pylab.xlabel("Year")
-    pylab.savefig('deaths.png')
+    pylab.savefig('images/deaths.png')
