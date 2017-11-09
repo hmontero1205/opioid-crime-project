@@ -20,7 +20,6 @@ def press(button):
             extraText = ""
         else:
             extraText = "(" + str(popUpNames[str(zipCode)]) + ")"
-            print(extraText)
             popUpNames[zipCode] += 1
             
         window.startSubWindow(str(zipCode) + " Crimes " + extraText)
@@ -71,11 +70,11 @@ def press(button):
         d.plotCrimeData(zipCode)
         window.addImage(str(zipCode) + "c"+ extraText, 'images/crimes.png')
         window.stopSubWindow()
-        window.startSubWindow(str(zipCode) + " Deaths" + extraText)
+        window.startSubWindow(str(zipCode) + " Deaths " + extraText)
         d.plotOpioidData(zipCode)
         window.addImage(str(zipCode) + "d"+ extraText, "images/deaths.png")
-        window.showSubWindow(str(zipCode) + " Crimes" + extraText)
-        window.showSubWindow(str(zipCode) + " Deaths" + extraText)
+        window.showSubWindow(str(zipCode) + " Crimes " + extraText)
+        window.showSubWindow(str(zipCode) + " Deaths " + extraText)
 window = gui("Opioid Crisis Tool", "400x400")
 window.addLabel("title", "Opioid Deaths vs Crime")
 window.setFont(25)
